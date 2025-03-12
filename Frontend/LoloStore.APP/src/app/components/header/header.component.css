@@ -1,0 +1,73 @@
+#login-cadastro {
+  color: #9B70E8;
+  align-self: flex-end;
+  margin-top: 1rem;
+  text-decoration: none;
+}
+
+#coracao {
+  width: 2rem;
+  position: relative;
+  top: 0.5rem
+}
+
+.botoes-logo-area {
+  list-style: none;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.botao-logo-area {
+  cursor: pointer;
+  margin-right: 2rem;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-roxa {
+  width: 3rem;
+  margin-left: 3rem;
+}
+
+.botao-avatar {
+  margin-top: -1rem;
+  color: #9B70E8;
+}
+
+.nav {
+  background-color: #9B70E8;
+  padding: 0.2rem;
+}
+
+.nav-itens {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-itens li {
+  margin-right: 5rem;
+  color: white;
+  padding: 0.5rem;
+}
+
+.nav-itens li a {
+  font-size: 17px;
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.selected {
+  background-color: white;
+  border-radius: 2rem;
+  color: #9B70E8 !important;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}

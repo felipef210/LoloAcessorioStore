@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.botoes-nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.botao-avatar {
+  display: flex;
+  align-items: center;
+}
+
+#login-cadastro {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  color: white;
+  border-radius: 1rem;
+}
+
+#avatar {
+  width: 2rem;
+}

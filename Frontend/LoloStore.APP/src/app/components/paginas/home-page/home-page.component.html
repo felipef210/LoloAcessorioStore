@@ -1,0 +1,55 @@
+<section class="caixa1">
+  <header>
+    <nav>
+      <a routerLink="/home"><img class="logo-pequena" src="../../../assets/logo_branca_navbar.png" alt="logo_branca_navbar"></a>
+
+      <div class="botoes-nav">
+        <div class="botao-avatar">
+          <a href="#" id="login-cadastro">
+            <img id="avatar" src="../../../assets/avatar_usuario.png" alt="avatar_usuario">
+            <span>Entre ou <br>Cadastre-se</span>
+          </a>
+        </div>
+
+        <a routerLink="/catalogo" class="btn">Catálogo</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="conteudo-caixa-1">
+    <article>
+      <h2>Bem-vinda a<br>Lolo Acessórios Store</h2>
+      <p><strong>Aqui você encontra uma variedade de <br>acessórios de excelente qualidade.</strong></p>
+      <br>
+      <a (click)="rolarPara('caixa2')" class="btn">Saiba mais</a>
+    </article>
+
+    <figure routerLink="/catalogo" class="fotos-home">
+      <img class="foto-home" src="../../../../assets/lolo_acessorio1.jpg">
+      <img class="foto-home" src="../../../../assets/acessorio1.jpg">
+      <img class="foto-home" src="../../../../assets/acessorio2.jpg">
+      <img class="foto-home" src="../../../../assets/lolo_acessorio2.jpg">
+
+    </figure>
+  </div>
+
+
+</section>
+
+
+<section id="caixa2" class="caixa2">
+  <figure class="img-caixa2">
+    <img src="../../../assets/lolo.jpg" alt="heloísa" class="foto">
+  </figure>
+
+  <article class="texto-caixa2">
+    <h2 class="quem-sou">Quem sou eu...</h2>
+    <p>
+      Olá! Meu nome é Heloísa Costa, tenho 22 anos e sou apaixonada por beleza e autocuidado. Acredito que cada detalhe faz a diferença, e foi com esse pensamento que decidi criar minha loja de acessórios. Meu objetivo é oferecer peças que realcem a personalidade e o estilo de cada uma de vocês, trazendo mais um nicho para atendê-las com carinho e dedicação.
+    </p>
+
+    <p>
+      Confiram meu catálogo de produtos, espero que gostem de cada item tanto quanto eu! 💖✨
+    </p>
+  </article>
+</section>

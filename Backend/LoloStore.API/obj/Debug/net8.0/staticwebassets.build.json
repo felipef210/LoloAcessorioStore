@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "zTrptVHX+6T9sYqYVM6mFjjzDtZbd6lce+/jwjK4p0I=",
+  "Source": "LoloStore.API",
+  "BasePath": "_content/LoloStore.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

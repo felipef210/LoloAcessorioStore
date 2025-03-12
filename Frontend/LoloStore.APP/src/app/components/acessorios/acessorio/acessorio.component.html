@@ -1,0 +1,14 @@
+<div class="card">
+  <figure class="secao-imagem">
+    <img class="img-acessorio" src="../../../../assets/acessorio1.jpg">
+  </figure>
+
+  <div class="secao-texto">
+    <div class="nome-produto">
+      <span>{{ acessorio.nome }}</span>
+    </div>
+
+    <h2 class="preco">R${{ acessorio.preco | number: '1.2-2' }}</h2>
+    <button class="btn-detalhes">Detalhes</button>
+  </div>
+</div>

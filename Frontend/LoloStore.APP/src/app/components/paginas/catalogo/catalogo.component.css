@@ -1,0 +1,47 @@
+.area-filtro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.area-filtro h2 {
+  font-size: 34px;
+  font-weight: 100;
+}
+
+.filtro {
+  margin-top: -2rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  width: 40rem;
+  border-radius: 0.5rem;
+  border: 2px solid black;
+  font-size: 1rem;
+  transition: box-shadow 0.3s ease;
+  background-image: url('../../../../assets/lupa.png');
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Alinha a lupa à direita */
+  background-size: 1.5rem;
+}
+
+.filtro:focus {
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-filtro {
+  text-align: center;
+}
+
+.form-filtro label {
+  margin-right: 0.5rem;
+  font-size: 18px;
+}
+
+.form-filtro select {
+  border-radius: 0.5rem;
+  border: 2px solid black;
+  padding: 0.1rem;
+  width: 9rem;
+}

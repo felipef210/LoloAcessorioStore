@@ -1,0 +1,31 @@
+<header>
+  <div class="logo-area">
+    <a routerLink="/home"><img class="logo-roxa" src="../../../assets/logo_roxa_navbar.png" alt="logo_branca_navbar"></a>
+    <div class="botao-avatar">
+      <ul class="botoes-logo-area">
+        <li>
+          <a class="botao-logo-area">
+            <img id="coracao" src="../../../assets/favoritos.png" alt="avatar_usuario">
+            <span>Favoritos</span>
+          </a>
+        </li>
+        <li >
+          <a class="botao-logo-area" id="login-cadastro">
+            <img id="avatar" src="../../../assets/avatar_usuario_roxo.png" alt="avatar_usuario">
+            <span>Entre ou <br>Cadastre-se</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <ul class="nav-itens">
+      <li *ngFor="let item of menuItems"
+          (click)="selecionarItem(item)"
+          [class.selected]="item === itemSelecionado">
+        <a>{{ item }}</a>
+      </li>
+    </ul>
+  </nav>
+</header>
