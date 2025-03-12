@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Backend",
+    "\\Backend\\LoloStore.Api",
+    "\\Frontend",
+    "\\Frontend\\LoloStore.APP",
+    "\\Frontend\\LoloStore.APP\\src"
+  ],
+  "SelectedNode": "\\Backend\\LoloStore.Api\\LoloStore.Api.sln",
+  "PreviewInSolutionExplorer": false
+}
