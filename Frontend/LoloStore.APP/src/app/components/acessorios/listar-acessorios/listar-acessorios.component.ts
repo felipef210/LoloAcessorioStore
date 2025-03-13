@@ -31,6 +31,14 @@ export class ListarAcessoriosComponent {
       descricao: 'Brincos clássicos de pérola para um look elegante.',
       classificacao: 'Brincos',
       favorito: false
+    },
+    {
+      id: 4,
+      nome: 'Brincos Pérola',
+      preco: 39.90,
+      descricao: 'Brincos clássicos de pérola para um look elegante.',
+      classificacao: 'Brincos',
+      favorito: false
     }
   ];
 }
