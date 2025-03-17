@@ -1,46 +1,48 @@
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    flex-grow: 1;
-    align-items: center;
-    border: 2px solid #9B70E8;
-    border-radius: 2rem;
-    width: 25rem;
-    margin: 2rem auto;   
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  flex-grow: 1;
+  align-items: center;
+  border: 2px solid #9B70E8;
+  border-radius: 2rem;
+  width: 25rem;
+  margin: 2rem auto;
 }
 
 #email, #nome, #dataNascimento {
-    padding-left: 2rem;
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-position-x: 0.5rem;
+  padding-left: 2rem;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-position-x: 0.5rem;
 }
 
 #nome {
-    background-size: 1rem;
-    background-image: url("../../../../assets/avatar_usuario_roxo.png")
+  background-size: 1rem;
+  background-image: url("../../../assets/avatar_usuario_roxo.png");
 }
 
 #dataNascimento {
-    background-size: 1rem;
-    background-image: url("../../../../assets/calendario.png");
+  background-size: 1rem;
+  background-image: url("../../../assets/calendario.png");
 }
 
 #email {
-    background-size: 1rem;
-    background-image: url("../../../../assets/email.jpg");   
+  background-size: 1rem;
+  background-image: url("../../../assets/email.jpg");
 }
 
+
+
 .form-login, .form-cadastro {
-    text-align: center;
+  text-align: center;
 }
 
 .change-layout {
@@ -129,7 +131,7 @@ form {
     z-index: 1;
     padding: 0;
 }
-  
+
 .toggle-password:hover {
     color: #6b40b5;
 }
@@ -141,5 +143,20 @@ form {
     background-position-x: 0.5rem;
     margin-left: 1.2rem;
     background-size: 0.9rem;
-    background-image: url("../../../../assets/cadeado.png");
+    background-image: url("../../../assets/cadeado.png");
+}
+
+.mensagem_erro {
+  width: 90%;
+  text-align: start;
+}
+
+.mensagem_erro_login {
+  margin-left: 1.3rem;
+  text-align: left;
+}
+
+.ng-touched.ng-invalid:not(form) {
+  border-color: red;
+  color: red;
 }

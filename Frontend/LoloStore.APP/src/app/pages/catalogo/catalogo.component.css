@@ -58,7 +58,7 @@
   border: 2px solid black;
   font-size: 1rem;
   transition: box-shadow 0.3s ease;
-  background-image: url('../../../../assets/lupa.png');
+  background-image: url('../../../assets/lupa.png');
   background-repeat: no-repeat;
   background-position: right 10px center; /* Alinha a lupa à direita */
   background-size: 1.5rem;
