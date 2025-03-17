@@ -1,19 +1,31 @@
-<app-header></app-header>
-<section class="area-filtro">
-  <h2>Catálogo</h2>
-  <form class="form-filtro">
-    <input type="text" class="filtro"><br>
-    <label>Ordenar por:</label>
-    <select>
-      <option value="" disabled selected>Escolha uma opção</option>
-      <option value="menor-preco">Menor Preço</option>
-      <option value="maior-preco">Maior Preço</option>
-    </select>
-  </form>
-</section>
-
-<section>
-  <app-listar-acessorios></app-listar-acessorios>
-</section>
-
-<app-footer></app-footer>
+<body class="container">
+  <app-header></app-header>
+  <nav class="nav">
+    <ul class="nav-itens">
+      <li *ngFor="let item of menuItems"
+          (click)="selecionarItem(item)"
+          [class.selected]="item === itemSelecionado">
+        <a>{{ item }}</a>
+      </li>
+    </ul>
+  </nav>
+  <section class="area-filtro">
+    <h2>Catálogo</h2>
+    <form class="form-filtro">
+      <input type="text" class="filtro"><br>
+      <label>Ordenar por:</label>
+      <select>
+        <option value="" disabled selected>Escolha uma opção</option>
+        <option value="menor-preco">Menor Preço</option>
+        <option value="maior-preco">Maior Preço</option>
+      </select>
+    </form>
+  </section>
+  
+  <section class="catalogo">
+    <app-listar-acessorios></app-listar-acessorios>
+  </section>
+  
+  <app-footer></app-footer>
+  
+</body>

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Acessorio } from '../acessorio';
+import { Acessorio } from '../../../interfaces/acessorio';
 
 @Component({
   selector: 'app-acessorio',
@@ -14,7 +14,6 @@ export class AcessorioComponent {
       preco: 0,
       descricao: '',
       classificacao: '',
-      imagem: [],
-      favorito: false
+      imagens: [],
     }
 }

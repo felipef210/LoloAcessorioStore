@@ -5,3 +5,9 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+.sem-resultados {
+  color: #9B70E8;
+  font-weight: bold;
+  text-align: center;
+}

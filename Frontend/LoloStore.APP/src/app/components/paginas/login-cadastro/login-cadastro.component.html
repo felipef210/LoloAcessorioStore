@@ -1,0 +1,52 @@
+<body class="container">
+  <app-header></app-header>
+  <form id="formulario" #formulario="ngForm" (ngSubmit)="enviarFormulario(formulario)">
+    <div class="change-layout">
+      <a class="btn-layout" [class.selected]="formularioSelecionado === 'login'" (click)="mostraFormulario('login')">ENTRE</a>
+      <a class="btn-layout" [class.selected]="formularioSelecionado === 'cadastro'" (click)="mostraFormulario('cadastro')">CADASTRE-SE</a>
+    </div>
+
+    <div class="form-login" *ngIf="formularioSelecionado === 'login'; else cadastro">
+      <img class="logo" src="../../../../assets/logo_roxa_navbar.png" alt="Logo Roxa">
+      <input id="email" name="email" class="campos" type="email" placeholder="E-mail">
+      <div class="password-container">
+        <input id="senhaLogin" name="senha" class="campos inputSenha" 
+               [type]="showPasswordLogin ? 'text' : 'password'" 
+               placeholder="Senha">
+        <button [style.background-image]="'url(' + (showPasswordLogin ? '../../../../assets/esconderSenha.png' : '../../../../assets/mostrarSenha.png') + ')'" 
+                type="button" 
+                class="toggle-password" 
+                (click)="togglePassword('login')"></button>
+      </div>
+      <button class="btn">LOGIN</button>
+    </div>
+
+    <ng-template #cadastro>
+      <img class="logo" src="../../../../assets/logo_roxa_navbar.png">
+      <input id="nome" name="nome" class="campos" type="text" placeholder="Nome">
+      <input id="dataNascimento" name="dataNascimento" class="campos" type="text" onblur="{this.type='text'}" onfocus="{this.type='date'}" placeholder="Data de nascimento">
+      <input id="email" name="email" class="campos" type="email" placeholder="E-mail">
+      <div class="password-container">
+        <input id="senhaCadastro" name="senha" class="campos inputSenha" 
+               [type]="showPasswordCadastro ? 'text' : 'password'" 
+               placeholder="Senha">
+        <button [style.background-image]="'url(' + (showPasswordCadastro ? '../../../../assets/esconderSenha.png' : '../../../../assets/mostrarSenha.png') + ')'" 
+                type="button" 
+                class="toggle-password" 
+                (click)="togglePassword('cadastro')"></button>
+      </div>
+      <div class="password-container">
+        <input id="confirmaSenhaCadastro" name="confirmarSenha" class="campos inputSenha" 
+               [type]="showPasswordConfirmacao ? 'text' : 'password'" 
+               placeholder="Confirmar senha">
+        <button [style.background-image]="'url(' + (showPasswordConfirmacao ? '../../../../assets/esconderSenha.png' : '../../../../assets/mostrarSenha.png') + ')'" 
+                type="button" 
+                class="toggle-password" 
+                (click)="togglePassword('confirmacao')"></button>
+      </div>
+      <button class="btn">CADASTRE-SE</button>
+    </ng-template>
+  </form>
+  <app-modal [isOpen]="isModalOpen" (close)="closeModal()"></app-modal>
+  <app-footer></app-footer>
+</body>

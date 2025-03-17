@@ -6,10 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  menuItems: string[] = ['Todos os produtos', 'Anéis', 'Braceletes', 'Brincos', 'Colares', 'Pulseiras'];
-  itemSelecionado: string = this.menuItems[0];
-
-  selecionarItem(item: string) {
-    this.itemSelecionado = item;
-  }
+  
 }

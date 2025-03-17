@@ -1,14 +1,12 @@
 #login-cadastro {
   color: #9B70E8;
-  align-self: flex-end;
-  margin-top: 1rem;
+  align-self: flex-end; 
   text-decoration: none;
 }
 
-#coracao {
+#catalogo {
   width: 2rem;
-  position: relative;
-  top: 0.5rem
+  margin-right: 0.2rem;
 }
 
 .botoes-logo-area {
@@ -17,11 +15,16 @@
   display: flex;
   align-items: center;
   font-weight: bold;
+  margin-top: 2rem;
 }
 
 .botao-logo-area {
   cursor: pointer;
   margin-right: 2rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #9B70E8;
 }
 
 .logo-area {
@@ -40,34 +43,3 @@
   color: #9B70E8;
 }
 
-.nav {
-  background-color: #9B70E8;
-  padding: 0.2rem;
-}
-
-.nav-itens {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-}
-
-.nav-itens li {
-  margin-right: 5rem;
-  color: white;
-  padding: 0.5rem;
-}
-
-.nav-itens li a {
-  font-size: 17px;
-  text-decoration: none;
-  cursor: pointer;
-  color: inherit;
-}
-
-.selected {
-  background-color: white;
-  border-radius: 2rem;
-  color: #9B70E8 !important;
-  font-weight: bold;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-}

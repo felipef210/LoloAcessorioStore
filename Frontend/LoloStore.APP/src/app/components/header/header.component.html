@@ -4,13 +4,13 @@
     <div class="botao-avatar">
       <ul class="botoes-logo-area">
         <li>
-          <a class="botao-logo-area">
-            <img id="coracao" src="../../../assets/favoritos.png" alt="avatar_usuario">
-            <span>Favoritos</span>
+          <a routerLink="/catalogo" class="botao-logo-area">
+            <img id="catalogo" src="../../../assets/catalogo.png" alt="Imagem Catálogo">
+            <span>Catálogo</span>
           </a>
         </li>
-        <li >
-          <a class="botao-logo-area" id="login-cadastro">
+        <li>
+          <a routerLink="/login-cadastro" class="botao-logo-area" id="login-cadastro">
             <img id="avatar" src="../../../assets/avatar_usuario_roxo.png" alt="avatar_usuario">
             <span>Entre ou <br>Cadastre-se</span>
           </a>
@@ -18,14 +18,4 @@
       </ul>
     </div>
   </div>
-
-  <nav class="nav">
-    <ul class="nav-itens">
-      <li *ngFor="let item of menuItems"
-          (click)="selecionarItem(item)"
-          [class.selected]="item === itemSelecionado">
-        <a>{{ item }}</a>
-      </li>
-    </ul>
-  </nav>
 </header>

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +12,11 @@ import { AcessorioComponent } from './components/acessorios/acessorio/acessorio.
 import { ListarAcessoriosComponent } from './components/acessorios/listar-acessorios/listar-acessorios.component';
 import { DetalheAcessorioComponent } from './components/acessorios/detalhe-acessorio/detalhe-acessorio.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { UsuarioComponent } from './components/usuarios/usuario/usuario.component';
+import { LoginCadastroComponent } from './components/paginas/login-cadastro/login-cadastro.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { ModalComponent } from './components/modal/modal.component';
+
 
 @NgModule({
   declarations: [
@@ -21,13 +28,20 @@ import { FooterComponent } from './components/footer/footer.component';
     ListarAcessoriosComponent,
     DetalheAcessorioComponent,
     FooterComponent,
+    UsuarioComponent,
+    LoginCadastroComponent,
+    ModalComponent,
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

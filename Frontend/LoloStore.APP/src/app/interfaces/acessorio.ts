@@ -4,6 +4,5 @@ export interface Acessorio {
   preco: number,
   descricao: string,
   classificacao: string,
-  imagem?: string[],
-  favorito: boolean
+  imagens?: string[]
 }

@@ -1,5 +1,13 @@
-<div class="catalogo">
-  <div *ngFor="let acessorio of listaAcessorios">
-    <app-acessorio [acessorio]="acessorio"></app-acessorio>
+<div>
+  <div class="catalogo" *ngIf="listaAcessorios.length > 0; else semAcessorios">
+    <div *ngFor="let acessorio of listaAcessorios">
+      <app-acessorio [acessorio]="acessorio"></app-acessorio>
+    </div>
   </div>
+
+  <ng-template #semAcessorios>
+    <div class="sem-resultados">
+      <p>0 resultados encontrados.</p>
+    </div>
+  </ng-template>
 </div>

@@ -1,0 +1,145 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    flex-grow: 1;
+    align-items: center;
+    border: 2px solid #9B70E8;
+    border-radius: 2rem;
+    width: 25rem;
+    margin: 2rem auto;   
+}
+
+#email, #nome, #dataNascimento {
+    padding-left: 2rem;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-position-x: 0.5rem;
+}
+
+#nome {
+    background-size: 1rem;
+    background-image: url("../../../../assets/avatar_usuario_roxo.png")
+}
+
+#dataNascimento {
+    background-size: 1rem;
+    background-image: url("../../../../assets/calendario.png");
+}
+
+#email {
+    background-size: 1rem;
+    background-image: url("../../../../assets/email.jpg");   
+}
+
+.form-login, .form-cadastro {
+    text-align: center;
+}
+
+.change-layout {
+    margin-top: -2.6rem;
+    margin-bottom: 1.5rem;
+    background-color: white;
+    text-align: center;
+}
+
+.btn-layout {
+    border-radius: 2rem;
+    border: none;
+    font-weight: bold;
+    background-color: #9B70E8;
+    color: white;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: all 0.5s ease-in-out;
+}
+
+.btn-layout:hover {
+    box-shadow: 0px 6px 40px rgba(0, 0, 0, 0.5);
+}
+
+.btn-layout:first-child {
+    margin-right: -1rem;
+    padding-right: 1rem;
+}
+
+.btn-layout.selected {
+    background-color: white;
+    border: 2px solid #9B70E8;
+    color: #9B70E8;
+}
+
+.logo {
+    width: 3rem;
+    margin-bottom: 2rem;
+}
+
+.campos {
+    font-size: 17px;
+    margin-top: 1rem;
+    width: 20rem;
+    border-radius: 1rem;
+    border: 2px solid #9B70E8;
+    color: #9B70E8;
+    padding: 0.5rem;
+}
+
+.campos::placeholder {
+    color: #9B70E8;
+}
+
+.btn {
+    background-color: #9B70E8;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    padding: 0.5rem;
+    width: 10rem;
+    font-weight: bold;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+.password-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.toggle-password {
+    background: none;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    background-size: 1.5rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-size: 1.5rem;
+    color: #9B70E8;
+    cursor: pointer;
+    margin-left: -2.5rem;
+    margin-top: 1rem;
+    z-index: 1;
+    padding: 0;
+}
+  
+.toggle-password:hover {
+    color: #6b40b5;
+}
+
+.inputSenha {
+    padding-left: 2rem;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-position-x: 0.5rem;
+    margin-left: 1.2rem;
+    background-size: 0.9rem;
+    background-image: url("../../../../assets/cadeado.png");
+}

@@ -1,3 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.nav {
+  background-color: #9B70E8;
+  padding: 0.2rem;
+}
+
+.nav-itens {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-itens li {
+  margin-right: 5rem;
+  color: white;
+  padding: 0.5rem;
+}
+
+.nav-itens li a {
+  font-size: 17px;
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.selected {
+  background-color: white;
+  border-radius: 2rem;
+  color: #9B70E8 !important;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
 .area-filtro {
   display: flex;
   justify-content: center;
@@ -44,4 +83,8 @@
   border: 2px solid black;
   padding: 0.1rem;
   width: 9rem;
+}
+
+.catalogo {
+  flex-grow: 1;
 }
