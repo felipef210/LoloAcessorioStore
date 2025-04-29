@@ -10,13 +10,17 @@
       </div>
 
       <div *ngIf="user$ | async as Usuario, else login" >
-        <div class="botao-nav-area">
-          <span class="botao-nav-area">
-            <img routerLink="/perfil" src="../../../assets/user.png" alt="Ícone da pessoa usuária">
+        <div>
+          <span id="profile">
+            <img src="../../../assets/user.png" alt="Ícone da pessoa usuária">
             Olá {{ Usuario.name.split(' ')[0] }}
+
+            <ul class="sub-menu">
+              <li><a routerLink="/perfil">Meu perfil</a></li>
+              <li><a class="logout" (click)="logout()">Sair</a></li>
+            </ul>
           </span>
-          <button class="logout" (click)="logout()"></button>
-          <span (click)="logout()">Sair</span>
+
         </div>
 
       </div>

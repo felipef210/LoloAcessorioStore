@@ -18,6 +18,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { ModalComponent } from './components/modal/modal.component';
 import { MensagemComponent } from './components/mensagem/mensagem.component';
 import { AutenticacaoInterceptor } from './interceptor/autenticacao.interceptor';
+import { PerfilComponent } from './pages/perfil/perfil.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { AutenticacaoInterceptor } from './interceptor/autenticacao.interceptor'
     LoginCadastroComponent,
     ModalComponent,
     MensagemComponent,
+    PerfilComponent,
   ],
   imports: [
     BrowserModule,

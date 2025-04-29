@@ -9,9 +9,39 @@
   margin-right: 0.2rem;
 }
 
+#profile {
+  padding: 1rem;
+  text-decoration: none;
+  color: #9B70E8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#profile:hover .sub-menu {
+  display: block;
+}
+
+ul {
+  list-style: none;
+  cursor: pointer;
+}
+
+ul li {
+  text-decoration: none;
+  margin: .5rem 0;
+}
+
+a[routerLink] {
+  text-decoration: none; /* remove sublinhado */
+  color: inherit;         /* herda a cor do elemento pai */
+  cursor: pointer;
+}
+
 .nav-area {
   margin-top: .5rem;
-  padding: 0 2rem;
+  padding: .5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -45,7 +75,7 @@
   cursor: pointer;
 }
 
-.botao-nav-area img {
+#profile img {
   cursor: pointer;
   margin-right: .2rem;
 }
@@ -54,12 +84,24 @@
   cursor: pointer;
 }
 
+.sub-menu {
+  display: none;
+  position: absolute;
+  padding: .5rem;
+  background-color: #FFF;
+  z-index: 1;
+  padding: .6rem;
+  border-radius: 1rem;
+  top: 7%;
+  right: 2.5%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.sub-menu:hover {
+  display: block;
+}
+
 .logout {
-  background: none;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 1.6rem;
-  background-image: url("../../../assets/logout.png");
   border: none;
   width: 2rem;
   height: 3.5rem;
