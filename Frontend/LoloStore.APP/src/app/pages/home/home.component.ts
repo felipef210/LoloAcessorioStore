@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { UsuarioService } from '../../services/usuario.service';
+import { Observable } from 'rxjs';
+import { Usuario } from '../../interfaces/usuario';
 
 @Component({
   selector: 'app-home-page',
@@ -6,6 +9,14 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  constructor(private usuarioService: UsuarioService) {}
+
+  user$: Observable<Usuario | null> = this.usuarioService.retornarUser();
+
+  logout() {
+    this.usuarioService.logout();
+  }
+
   rolarPara(id: string) {
     const elemento = document.getElementById(id);
     if (!elemento) return;

@@ -8,6 +8,32 @@ a {
   text-decoration: none;
 }
 
+#profile {
+  padding: 1rem;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#profile:hover .sub-menu {
+  display: block;
+}
+
+ul {
+  list-style: none;
+  cursor: pointer;
+}
+
+ul li {
+  text-decoration: none;
+  margin: .5rem 0;
+}
+
+
+
 .logo-pequena {
   width: 3rem;
   margin-left: -1rem;
@@ -76,4 +102,46 @@ a {
 
 .quem-sou {
   text-align: center;
+}
+
+#profile img {
+  cursor: pointer;
+  margin-right: .2rem;
+}
+
+.botao-nav-area span {
+  cursor: pointer;
+}
+
+.sub-menu {
+  display: none;
+  position: absolute;
+  padding: .5rem;
+  background-color: #FFF;
+  color: #9B70E8;
+  cursor: pointer;
+  z-index: 1;
+  padding: .6rem;
+  border-radius: 1rem;
+  top: 11%;
+  right: 16%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+a[routerLink] {
+  text-decoration: none;
+  color: #9B70E8;
+}
+
+.sub-menu:hover {
+  display: block;
+}
+
+.logout {
+  border: none;
+  width: 2rem;
+  height: 3.5rem;
+  cursor: pointer;
+  z-index: 1;
+  padding: 0;
 }

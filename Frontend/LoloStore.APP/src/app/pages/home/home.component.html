@@ -4,12 +4,26 @@
       <a routerLink="/home"><img class="logo-pequena" src="../../../assets/logo_branca_navbar.png" alt="Logo Branca"></a>
 
       <div class="botoes-nav">
-        <div class="botao-avatar">
+        <div *ngIf="user$ | async as Usuario, else logado" class="botao-avatar">
+          <div>
+            <span id="profile">
+              <img src="../../../assets/user.png" alt="Ícone da pessoa usuária">
+              Olá {{ Usuario.name.split(' ')[0] }}
+
+              <ul class="sub-menu">
+                <li><a routerLink="/perfil">Meu perfil</a></li>
+                <li><a class="logout" (click)="logout()">Sair</a></li>
+              </ul>
+            </span>
+          </div>
+        </div>
+
+        <ng-template class="botao-avatar" #logado>
           <a routerLink="/login-cadastro" id="login-cadastro">
             <img id="avatar" src="../../../assets/avatar_usuario.png" alt="avatar_usuario">
             <span>Entre ou <br>Cadastre-se</span>
           </a>
-        </div>
+        </ng-template>
 
         <a routerLink="/catalogo" class="btn">Catálogo</a>
       </div>

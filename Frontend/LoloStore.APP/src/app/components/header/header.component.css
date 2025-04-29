@@ -34,8 +34,8 @@ ul li {
 }
 
 a[routerLink] {
-  text-decoration: none; /* remove sublinhado */
-  color: inherit;         /* herda a cor do elemento pai */
+  text-decoration: none;
+  color: inherit;
   cursor: pointer;
 }
 

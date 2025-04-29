@@ -1,1 +1,67 @@
-<p>perfil works!</p>
+<app-header></app-header>
+
+<div class="banner">
+  <img src="../../../assets/user.png">
+  <h2>Meu Perfil</h2>
+</div>
+
+<div class="container">
+  <form [formGroup]="perfilForm">
+    <h1>Olá, {{ usuarioLogado.name.split(' ')[0] }}!</h1>
+
+    <h2>Dados Pessoais</h2>
+
+    <label for="nome">Nome:</label>
+    <input class="inputs" id="nome" type="text" formControlName="name" placeholder="Seu nome completo" />
+    <div class="mensagem_erro" *ngIf="(perfilForm.get('name')?.invalid && perfilForm.get('name')?.touched) || perfilForm.get('name')?.dirty">
+      <app-mensagem *ngIf="perfilForm.get('name')?.errors?.['required']" mensagem="Nome deve ser preenchido."></app-mensagem>
+    </div>
+
+    <label for="nascimento">Data de Nascimento:</label>
+    <input class="inputs" type="date" formControlName="birthDate">
+
+    <label for="genero">Gênero:</label>
+    <select class="inputs" id="genero" formControlName="gender">
+      <option value="Masculino">Masculino</option>
+      <option value="Feminino">Feminino</option>
+      <option value="Outro">Outro</option>
+    </select>
+    <div class="mensagem_erro" *ngIf="(perfilForm.get('gender')?.invalid && perfilForm.get('gender')?.touched) || perfilForm.get('gender')?.dirty">
+      <app-mensagem *ngIf="perfilForm.get('gender')?.errors?.['required']" mensagem="Gênero deve ser preenchido."></app-mensagem>
+    </div>
+
+    <h2>Dados de Acesso</h2>
+
+    <label for="email">E-mail:</label>
+    <input class="inputs" id="email" type="email" formControlName="email" placeholder="seu@email.com" />
+    <div class="mensagem_erro" *ngIf="(perfilForm.get('email')?.invalid && perfilForm.get('email')?.touched) || perfilForm.get('email')?.dirty">
+      <app-mensagem *ngIf="perfilForm.get('email')?.errors?.['required']" mensagem="E-mail deve ser preenchido."></app-mensagem>
+    </div>
+
+    <label for="confirmarEmail">Confirmar E-mail:</label>
+    <input class="inputs" id="confirmarEmail" type="email" formControlName="reEmail" />
+    <div class="mensagem_erro" *ngIf="(perfilForm.get('email')?.invalid && perfilForm.get('email')?.touched) || perfilForm.get('email')?.dirty">
+      <app-mensagem *ngIf="perfilForm.get('email')?.errors?.['required']" mensagem="Confirmação de e-mail deve ser preenchida."></app-mensagem>
+    </div>
+
+    <label for="senha">Senha:</label>
+    <input class="inputs" id="senha" [type]="showPassword ? 'text' : 'password'" formControlName="password"/>
+    <button [style.background-image]="'url(' + (showPassword ? '../../../../assets/esconderSenha.png' : '../../../../assets/mostrarSenha.png') + ')'"
+                type="button"
+                class="toggle-password"
+                (click)="togglePassword('password')"></button>
+
+    <label for="confirmarSenha">Confirmar Senha:</label>
+    <input class="inputs" id="confirmarSenha" [type]="showPasswordConfirmation ? 'text' : 'password'" formControlName="rePassword" />
+    <button [style.background-image]="'url(' + (showPasswordConfirmation ? '../../../../assets/esconderSenha.png' : '../../../../assets/mostrarSenha.png') + ')'"
+                type="button"
+                class="toggle-password"
+                (click)="togglePassword('repassword')"></button>
+
+    <div class="form-actions">
+      <button class="btn" [class.invalid]="perfilForm.invalid" type="button" (click)="atualizar()" [disabled]="perfilForm.invalid">Atualizar Perfil</button>
+    </div>
+  </form>
+</div>
+
+<app-footer></app-footer>

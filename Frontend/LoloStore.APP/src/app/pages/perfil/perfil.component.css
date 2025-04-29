@@ -1,0 +1,90 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.banner {
+  width: 100%;
+  text-align: center;
+  background-color: #9B70E8;
+  padding: 1rem 0;
+}
+
+.banner h2 {
+  display: inline-block;
+  color: white;
+}
+
+.banner img {
+  display: inline-block;
+  margin-right: .5rem;
+  transform: translateY(25%);
+}
+
+.inputs {
+  border: 2px solid #9B70E8;
+  border-radius: .5rem;
+}
+
+
+.form-actions {
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #9B70E8;
+  color: white;
+  border-radius: .8rem;
+  border: 0;
+}
+
+.btn.invalid {
+  background-color: gray;
+  cursor: default;
+}
+
+.ng-touched.ng-invalid:not(form) {
+  border-color: red;
+  color: red;
+}
+
+.toggle-password {
+  background: none;
+  border: none;
+  width: 2rem;
+  height: 2rem;
+  background-size: 1.5rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 1.5rem;
+  color: #9B70E8;
+  cursor: pointer;
+  margin-left: -2.5rem;
+  z-index: 1;
+  padding: 0;
+  transform: translateY(35%);
+}
+
+.toggle-password:hover {
+  color: #6b40b5;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+}
+
+h1, h2 {
+  color: #9B70E8;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  box-sizing: border-box;
+}
