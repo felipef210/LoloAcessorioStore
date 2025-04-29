@@ -1,19 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { AutenticacaoService } from '../../services/autenticacao.service';
+import { CadastroService } from '../../services/cadastro.service';
+import { Usuario } from '../../interfaces/usuario';
+
+type TipoDeFormulario = 'login' | 'cadastro';
+
+enum CamposDeSenha {
+  LOGIN = 'login',
+  CADASTRO_SENHA = 'password',
+  CONFIRMA_CADASTRO = 'repassword'
+};
+
+enum TiposDeFormulario {
+  LOGIN = 'login',
+  CADASTRO = 'cadastro'
+};
 
 @Component({
   selector: 'app-login-cadastro',
   templateUrl: './login-cadastro.component.html',
   styleUrls: ['./login-cadastro.component.css']
 })
+
 export class LoginCadastroComponent implements OnInit {
   formularioLogin: FormGroup | any;
   formularioCadastro: FormGroup | any;
 
 
-  formularioSelecionado: string = 'login';
+  formularioSelecionado: TipoDeFormulario = TiposDeFormulario.LOGIN;
   dataNascimento: string = '';
+  mensagemErroCadastro: string | null = null;
+  mensagemErroLogin: string | null = null;
 
   showPasswordLogin: boolean = false;
   showPasswordCadastro: boolean = false;
@@ -21,55 +40,67 @@ export class LoginCadastroComponent implements OnInit {
   isModalOpen: boolean = false;
   isDatePicker: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private autenticacaoService: AutenticacaoService,
+    private cadastroService: CadastroService,
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit(): void {
-    this.formularioLogin = new FormGroup({
-      emailLogin: new FormControl('', [Validators.required, Validators.email]),
-      senhaLogin: new FormControl('', [Validators.required])
+    this.formularioLogin = this.formBuilder.group({
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required]]
     });
 
-    this.formularioCadastro = new FormGroup({
-      nome: new FormControl('', [Validators.required, Validators.minLength(2)]),
-      dataDeNascimento: new FormControl('', [Validators.required]),
-      emailCadastro: new FormControl('', [Validators.required, Validators.email]),
-      senhaCadastro: new FormControl('', [
+    this.formularioCadastro = this.formBuilder.group({
+      name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      birthDate: new FormControl('', [Validators.required]),
+      gender: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
         Validators.required,
         Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/)
       ]),
-      confirmaSenhaCadastro: new FormControl('', [Validators.required]),
+      repassword: new FormControl('', [Validators.required]),
     });
 
-    // Aplicando a validação personalizada para confirmar as senhas
     this.formularioCadastro.setValidators(this.confirmarSenhas);
+
+    this.formularioCadastro.valueChanges.subscribe(() => {
+      this.mensagemErroCadastro = null;
+    });
+
+    this.formularioLogin.valueChanges.subscribe(() => {
+      this.mensagemErroLogin = null;
+    });
   }
 
-  // Função de validação personalizada para a senha
+
   confirmarSenhas(group: FormGroup) {
-    const senha = group.get('senhaCadastro')?.value;
-    const confirmaSenha = group.get('confirmaSenhaCadastro')?.value;
+    const senha = group.get(CamposDeSenha.CADASTRO_SENHA)?.value;
+    const confirmaSenha = group.get(CamposDeSenha.CONFIRMA_CADASTRO)?.value;
     return senha === confirmaSenha ? null : { senhaDiferente: true };
   }
 
-  // Função para alternar a visibilidade das senhas
-  togglePassword(tipo: string) {
-    if (tipo === 'login')
+
+  togglePassword(campo: string) {
+    if (campo === CamposDeSenha.LOGIN)
       this.showPasswordLogin = !this.showPasswordLogin;
 
-    else if (tipo === 'cadastro')
+    else if (campo === CamposDeSenha.CADASTRO_SENHA)
       this.showPasswordCadastro = !this.showPasswordCadastro;
 
-    else if (tipo === 'confirmacao')
+    else if (campo === CamposDeSenha.CONFIRMA_CADASTRO)
       this.showPasswordConfirmacao = !this.showPasswordConfirmacao;
   }
 
-  // Função para alternar entre os formulários de login e cadastro
-  mostraFormulario(tipo: string) {
+  mostraFormulario(tipo: TipoDeFormulario) {
     this.formularioSelecionado = tipo;
   }
 
   enviarFormulario() {
-    if (this.formularioSelecionado === 'login')
+    if (this.formularioSelecionado === TiposDeFormulario.LOGIN)
       this.logar(this.formularioLogin);
 
     else
@@ -77,21 +108,39 @@ export class LoginCadastroComponent implements OnInit {
   }
 
   logar(formLogin: FormGroup) {
-    if (formLogin.valid) {
-      this.formularioLogin.reset();
-      this.router.navigate(['/catalogo']);
-    }
+    const email = this.formularioLogin.value.email;
+    const senha = this.formularioLogin.value.password;
 
-    else
-      console.log('Formulário de login inválido!');
+    if (formLogin.valid) {
+      this.autenticacaoService.autenticar(email, senha).subscribe({
+        next: (value) => {
+          console.log('Login realizado com sucesso!', value);
+          this.formularioLogin.reset();
+          this.router.navigate(['/catalogo']);
+          this.mensagemErroLogin = null;
+        },
+        error: (err) => {
+          console.log('Erro ao efetuar login', err);
+          this.mensagemErroLogin = 'E-mail ou senha inválido';
+        }
+      });
+    }
   }
 
   cadastrar(formCadastro: FormGroup) {
-    if (formCadastro.valid)
-      this.openModal();
-
-    else
-      console.log('Formulário de cadastro inválido!');
+    if (formCadastro.valid) {
+      const novoCadastro = formCadastro.getRawValue() as Usuario
+      this.cadastroService.cadastrar(novoCadastro).subscribe({
+        next: () => {
+          this.mensagemErroCadastro = null;
+          this.openModal();
+        },
+        error: (err) => {
+          console.log('Erro ao efetuar cadastro', err);
+          this.mensagemErroCadastro = '*' + err?.error;
+        }
+      });
+    }
   }
 
   openModal() {

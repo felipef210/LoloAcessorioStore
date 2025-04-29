@@ -1,7 +1,8 @@
 export interface Usuario {
     id: number,
     email: string,
-    senha: string,
-    nome: string,
-    dataNascimento: Date
+    password: string,
+    name: string,
+    birthDate: Date,
+    gender: string
 }

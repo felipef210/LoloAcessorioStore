@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.css'
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
 })
-export class HomePageComponent {
+export class HomeComponent {
   rolarPara(id: string) {
     const elemento = document.getElementById(id);
     if (!elemento) return;

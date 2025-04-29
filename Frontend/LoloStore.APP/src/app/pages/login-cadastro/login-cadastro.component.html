@@ -8,15 +8,15 @@
 
     <div class="form-login" *ngIf="formularioSelecionado === 'login'; else cadastro">
       <img class="logo" src="../../../../assets/logo_roxa_navbar.png" alt="Logo Roxa">
-      <input formControlName="emailLogin" autocomplete="off" id="email" name="email" class="campos" type="email" placeholder="E-mail">
+      <input formControlName="email" autocomplete="off" id="email" name="email" class="campos" type="email" placeholder="E-mail">
 
-      <div class="mensagem_erro_login" *ngIf="(formularioLogin.get('emailLogin')?.invalid && formularioLogin.get('emailLogin')?.touched) || formularioLogin.get('emailLogin')?.dirty">
-        <app-mensagem *ngIf="formularioLogin.get('emailLogin')?.errors?.['required']" mensagem="E-mail deve ser preenchido."></app-mensagem>
-        <app-mensagem *ngIf="formularioLogin.get('emailLogin')?.errors?.['email']" mensagem="E-mail inválido."></app-mensagem>
+      <div class="mensagem_erro_login" *ngIf="(formularioLogin.get('email')?.invalid && formularioLogin.get('email')?.touched) || formularioLogin.get('email')?.dirty">
+        <app-mensagem *ngIf="formularioLogin.get('email')?.errors?.['required']" mensagem="E-mail deve ser preenchido."></app-mensagem>
+        <app-mensagem *ngIf="formularioLogin.get('email')?.errors?.['email']" mensagem="E-mail inválido."></app-mensagem>
       </div>
 
       <div class="password-container">
-        <input formControlName="senhaLogin" id="senhaLogin" name="senha" class="campos inputSenha"
+        <input formControlName="password" id="senhaLogin" name="senha" class="campos inputSenha"
                [type]="showPasswordLogin ? 'text' : 'password'"
                placeholder="Senha">
         <button [style.background-image]="'url(' + (showPasswordLogin ? '../../../../assets/esconderSenha.png' : '../../../../assets/mostrarSenha.png') + ')'"
@@ -25,16 +25,19 @@
                 (click)="togglePassword('login')"></button>
       </div>
 
-      <div class="mensagem_erro_login" *ngIf="(formularioLogin.get('senhaLogin')?.invalid && formularioLogin.get('senhaLogin')?.touched) || formularioLogin.get('senhaLogin')?.dirty">
-        <app-mensagem *ngIf="formularioLogin.get('senhaLogin')?.errors?.['required']" mensagem="Senha deve ser preenchida."></app-mensagem>
+      <div class="mensagem_erro_login" *ngIf="(formularioLogin.get('password')?.invalid && formularioLogin.get('password')?.touched) || formularioLogin.get('password')?.dirty">
+        <app-mensagem *ngIf="formularioLogin.get('password')?.errors?.['required']" mensagem="Senha deve ser preenchida."></app-mensagem>
       </div>
 
-      <button class="btn">LOGIN</button>
+      <div class="mensagem_erro_login">
+        <app-mensagem *ngIf="mensagemErroLogin" [mensagem]="mensagemErroLogin"></app-mensagem>
+      </div>
+      <button [disabled]="formularioLogin.invalid" [class.invalid]="formularioLogin.invalid" class="btn">Login</button>
     </div>
 
     <ng-template #cadastro>
       <img class="logo" src="../../../../assets/logo_roxa_navbar.png">
-      <input formControlName="nome"
+      <input formControlName="name"
       id="nome"
       name="nome"
       class="campos"
@@ -43,13 +46,13 @@
       autocomplete="off"
       >
 
-      <div class="mensagem_erro" *ngIf="formularioCadastro.get('nome')?.invalid && (formularioCadastro.get('nome')?.touched || formularioCadastro.get('nome')?.dirty)">
-        <app-mensagem *ngIf="formularioCadastro.get('nome')?.errors?.['required']" mensagem="O campo nome deve ser preenchido."></app-mensagem>
-        <app-mensagem *ngIf="formularioCadastro.get('nome')?.errors?.['minlength']" mensagem="O campo de nome deve possuir no mínimo 2 caractéres."></app-mensagem>
+      <div class="mensagem_erro" *ngIf="formularioCadastro.get('name')?.invalid && (formularioCadastro.get('name')?.touched || formularioCadastro.get('name')?.dirty)">
+        <app-mensagem *ngIf="formularioCadastro.get('name')?.errors?.['required']" mensagem="O campo nome deve ser preenchido."></app-mensagem>
+        <app-mensagem *ngIf="formularioCadastro.get('name')?.errors?.['minlength']" mensagem="O campo de nome deve possuir no mínimo 2 caractéres."></app-mensagem>
       </div>
 
       <input
-      formControlName="dataDeNascimento"
+      formControlName="birthDate"
       id="dataNascimento"
       name="dataNascimento"
       class="campos"
@@ -57,11 +60,22 @@
       placeholder="Data de nascimento"
       autocomplete="off">
 
-      <div class="mensagem_erro" *ngIf="formularioCadastro.get('dataDeNascimento')?.invalid && (formularioCadastro.get('dataDeNascimento')?.touched || formularioCadastro.get('dataDeNascimento')?.dirty)">
-        <app-mensagem *ngIf="formularioCadastro.get('dataDeNascimento')?.errors?.['required']" mensagem="O campo data de nascimento deve ser preenchido."></app-mensagem>
+      <div class="mensagem_erro" *ngIf="formularioCadastro.get('birthDate')?.invalid && (formularioCadastro.get('birthDate')?.touched || formularioCadastro.get('birthDate')?.dirty)">
+        <app-mensagem *ngIf="formularioCadastro.get('birthDate')?.errors?.['required']" mensagem="O campo data de nascimento deve ser preenchido."></app-mensagem>
       </div>
 
-      <input formControlName="emailCadastro"
+      <select class="campos inputGenero" formControlName="gender">
+        <option value="" disabled selected>Gênero</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Feminino">Feminino</option>
+        <option value="Outros">Outros</option>
+      </select>
+
+      <div class="mensagem_erro" *ngIf="formularioCadastro.get('gender')?.invalid && (formularioCadastro.get('gender')?.touched || formularioCadastro.get('gender')?.dirty)">
+        <app-mensagem *ngIf="formularioCadastro.get('gender')?.errors?.['required']" mensagem="O campo gênero deve ser preenchido."></app-mensagem>
+      </div>
+
+      <input formControlName="email"
       id="email"
       name="email"
       class="campos"
@@ -69,9 +83,9 @@
       placeholder="E-mail"
       autocomplete="off">
 
-      <div class="mensagem_erro" *ngIf="(formularioCadastro.get('emailCadastro')?.invalid && formularioCadastro.get('emailCadastro')?.touched) || formularioCadastro.get('emailCadastro')?.dirty">
-        <app-mensagem *ngIf="formularioCadastro.get('emailCadastro')?.errors?.['required']" mensagem="O campo e-mail deve ser preenchido."></app-mensagem>
-        <app-mensagem *ngIf="formularioCadastro.get('emailCadastro')?.errors?.['email']" mensagem="O campo e-mail está inválido."></app-mensagem>
+      <div class="mensagem_erro" *ngIf="(formularioCadastro.get('email')?.invalid && formularioCadastro.get('email')?.touched) || formularioCadastro.get('email')?.dirty">
+        <app-mensagem *ngIf="formularioCadastro.get('email')?.errors?.['required']" mensagem="O campo e-mail deve ser preenchido."></app-mensagem>
+        <app-mensagem *ngIf="formularioCadastro.get('email')?.errors?.['email']" mensagem="O campo e-mail está inválido."></app-mensagem>
       </div>
 
       <div class="password-container">
@@ -81,18 +95,18 @@
         class="campos inputSenha"
         [type]="showPasswordCadastro ? 'text' : 'password'"
         placeholder="Senha"
-        formControlName="senhaCadastro"
+        formControlName="password"
         >
 
         <button [style.background-image]="'url(' + (showPasswordCadastro ? '../../../../assets/esconderSenha.png' : '../../../../assets/mostrarSenha.png') + ')'"
                 type="button"
                 class="toggle-password"
-                (click)="togglePassword('cadastro')"></button>
+                (click)="togglePassword('password')"></button>
       </div>
 
-      <div class="mensagem_erro" *ngIf="formularioCadastro.get('senhaCadastro')?.invalid && (formularioCadastro.get('senhaCadastro')?.touched || formularioCadastro.get('senhaCadastro')?.dirty)">
-        <app-mensagem *ngIf="formularioCadastro.get('senhaCadastro')?.errors?.['required']" mensagem="A senha é obrigatória."></app-mensagem>
-        <app-mensagem *ngIf="formularioCadastro.get('senhaCadastro')?.errors?.['pattern']" mensagem="A senha deve ter pelo menos 6 caracteres, incluindo uma letra maiúscula, uma letra minúscula e um número."></app-mensagem>
+      <div class="mensagem_erro" *ngIf="formularioCadastro.get('password')?.invalid && (formularioCadastro.get('password')?.touched || formularioCadastro.get('password')?.dirty)">
+        <app-mensagem *ngIf="formularioCadastro.get('password')?.errors?.['required']" mensagem="A senha é obrigatória."></app-mensagem>
+        <app-mensagem *ngIf="formularioCadastro.get('password')?.errors?.['pattern']" mensagem="A senha deve ter pelo menos 8 caracteres, incluindo uma letra maiúscula, uma letra minúscula e um número."></app-mensagem>
       </div>
 
       <div class="password-container">
@@ -102,22 +116,23 @@
         class="campos inputSenha"
         [type]="showPasswordConfirmacao ? 'text' : 'password'"
         placeholder="Confirmar senha"
-        formControlName="confirmaSenhaCadastro"
+        formControlName="repassword"
         >
 
         <button [style.background-image]="'url(' + (showPasswordConfirmacao ? '../../../../assets/esconderSenha.png' : '../../../../assets/mostrarSenha.png') + ')'"
                 type="button"
                 class="toggle-password"
-                (click)="togglePassword('confirmacao')"></button>
+                (click)="togglePassword('repassword')"></button>
       </div>
 
-      <div class="mensagem_erro" *ngIf="formularioCadastro.get('confirmaSenhaCadastro')?.invalid && (formularioCadastro.get('confirmaSenhaCadastro')?.touched || formularioCadastro.get('confirmaSenhaCadastro')?.dirty)">
-        <app-mensagem *ngIf="formularioCadastro.get('confirmaSenhaCadastro')?.errors?.['required']" mensagem="A senha é obrigatória."></app-mensagem>
+      <div class="mensagem_erro" *ngIf="formularioCadastro.get('repassword')?.invalid && (formularioCadastro.get('repassword')?.touched || formularioCadastro.get('repassword')?.dirty)">
+        <app-mensagem *ngIf="formularioCadastro.get('repassword')?.errors?.['required']" mensagem="A senha é obrigatória."></app-mensagem>
       </div>
+      <app-mensagem *ngIf="mensagemErroCadastro" [mensagem]="mensagemErroCadastro"></app-mensagem>
+      <app-mensagem class="mensagem_erro" *ngIf="formularioCadastro.hasError('senhaDiferente') && !formularioCadastro.get('repassword')?.errors?.['required']" mensagem="As senhas devem coincidir."></app-mensagem>
 
-      <app-mensagem class="mensagem_erro" *ngIf="formularioCadastro.hasError('senhaDiferente') && !formularioCadastro.get('confirmaSenhaCadastro')?.errors?.['required']" mensagem="As senhas devem coincidir."></app-mensagem>
+      <button [disabled]="formularioCadastro.invalid" [class.invalid]="formularioCadastro.invalid" class="btn" type="submit">Cadastre-se</button>
 
-      <button class="btn" type="submit">CADASTRE-SE</button>
     </ng-template>
   </form>
 

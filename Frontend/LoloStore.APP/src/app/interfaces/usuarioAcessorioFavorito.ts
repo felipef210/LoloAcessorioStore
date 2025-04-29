@@ -1,4 +1,4 @@
 export interface UsuarioAcessorioFavorito {
-    usuarioId: number,
-    produtoId: number
+    userId: number,
+    acesoryId: number
 }

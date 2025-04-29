@@ -20,6 +20,7 @@
   margin-right: 5rem;
   color: white;
   padding: 0.5rem;
+  transition: .2s
 }
 
 .nav-itens li a {
@@ -27,6 +28,10 @@
   text-decoration: none;
   cursor: pointer;
   color: inherit;
+}
+
+.nav-itens li:not(.selected):hover {
+  scale: 1.1;
 }
 
 .selected {

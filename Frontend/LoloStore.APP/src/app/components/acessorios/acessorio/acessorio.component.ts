@@ -10,10 +10,10 @@ export class AcessorioComponent {
   @Input() acessorio: Acessorio =
     {
       id: 0,
-      nome: '',
-      preco: 0,
-      descricao: '',
-      classificacao: '',
-      imagens: [],
+      name: '',
+      price: 0,
+      description: '',
+      category: '',
+      images: [],
     }
 }

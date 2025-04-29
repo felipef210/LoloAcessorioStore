@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomePageComponent } from './pages/home-page/home-page.component';
+import { HomeComponent } from './pages/home/home.component';
 import { CatalogoComponent } from './pages/catalogo/catalogo.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AcessorioComponent } from './components/acessorios/acessorio/acessorio.component';
@@ -17,12 +17,13 @@ import { LoginCadastroComponent } from './pages/login-cadastro/login-cadastro.co
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ModalComponent } from './components/modal/modal.component';
 import { MensagemComponent } from './components/mensagem/mensagem.component';
+import { AutenticacaoInterceptor } from './interceptor/autenticacao.interceptor';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
+    HomeComponent,
     CatalogoComponent,
     HeaderComponent,
     AcessorioComponent,
@@ -42,7 +43,12 @@ import { MensagemComponent } from './components/mensagem/mensagem.component';
     ReactiveFormsModule
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AutenticacaoInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -2,9 +2,9 @@
   <app-header></app-header>
   <nav class="nav">
     <ul class="nav-itens">
-      <li *ngFor="let item of menuItems"
-          (click)="selecionarItem(item)"
-          [class.selected]="item === itemSelecionado">
+      <li *ngFor="let item of menuCategoria"
+          (click)="selecionarCategoria(item)"
+          [class.selected]="item === categoriaSelecionada">
         <a>{{ item }}</a>
       </li>
     </ul>
@@ -14,18 +14,18 @@
     <form class="form-filtro">
       <input type="text" class="filtro"><br>
       <label>Ordenar por:</label>
-      <select>
-        <option value="" disabled selected>Escolha uma opção</option>
+      <select [(ngModel)]="ordemSelecionada" name="ordenar">
+        <option value="" selected>Escolha uma opção</option>
         <option value="menor-preco">Menor Preço</option>
         <option value="maior-preco">Maior Preço</option>
       </select>
     </form>
   </section>
-  
+
   <section class="catalogo">
-    <app-listar-acessorios></app-listar-acessorios>
+    <app-listar-acessorios [ordemSelecionada]="ordemSelecionada" [categoriaSelecionada]="categoriaSelecionada"></app-listar-acessorios>
   </section>
-  
+
   <app-footer></app-footer>
-  
+
 </body>

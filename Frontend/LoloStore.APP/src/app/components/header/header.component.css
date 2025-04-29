@@ -1,6 +1,6 @@
 #login-cadastro {
   color: #9B70E8;
-  align-self: flex-end; 
+  align-self: flex-end;
   text-decoration: none;
 }
 
@@ -9,25 +9,9 @@
   margin-right: 0.2rem;
 }
 
-.botoes-logo-area {
-  list-style: none;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-  margin-top: 2rem;
-}
-
-.botao-logo-area {
-  cursor: pointer;
-  margin-right: 2rem;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #9B70E8;
-}
-
-.logo-area {
+.nav-area {
+  margin-top: .5rem;
+  padding: 0 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -35,11 +19,51 @@
 
 .logo-roxa {
   width: 3rem;
-  margin-left: 3rem;
+  margin-left: 1rem;
 }
 
-.botao-avatar {
-  margin-top: -1rem;
+.botoes-nav-area {
+  list-style: none;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.botao-nav-area {
+  margin-right: 2rem;
+  display: flex;
+  align-items: center;
   color: #9B70E8;
 }
 
+.botao-nav-area a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #9B70E8;
+  cursor: pointer;
+}
+
+.botao-nav-area img {
+  cursor: pointer;
+  margin-right: .2rem;
+}
+
+.botao-nav-area span {
+  cursor: pointer;
+}
+
+.logout {
+  background: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 1.6rem;
+  background-image: url("../../../assets/logout.png");
+  border: none;
+  width: 2rem;
+  height: 3.5rem;
+  cursor: pointer;
+  z-index: 1;
+  padding: 0;
+}

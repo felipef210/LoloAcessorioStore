@@ -1,15 +1,15 @@
 <div class="card">
   <figure class="secao-imagem">
-    <img class="img-acessorio" src="../../../../assets/{{ acessorio.imagens?.[0] }}.jpg">
-    
+    <img class="img-acessorio" src="../../../../assets/{{ acessorio.images?.[0] }}.jpg">
+
   </figure>
 
   <div class="secao-texto">
     <div class="nome-produto">
-      <span>{{ acessorio.nome }}</span>
+      <span>{{ acessorio.name }}</span>
     </div>
 
-    <h2 class="preco">R${{ acessorio.preco | number: '1.2-2' }}</h2>
+    <h2 class="preco">R${{ acessorio.price | number: '1.2-2' }}</h2>
     <button class="btn-detalhes">Detalhes</button>
   </div>
 </div>

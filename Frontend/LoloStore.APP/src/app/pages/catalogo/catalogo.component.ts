@@ -6,10 +6,12 @@ import { Component } from '@angular/core';
   styleUrl: './catalogo.component.css'
 })
 export class CatalogoComponent {
-  menuItems: string[] = ['Todos os produtos', 'Anéis', 'Braceletes', 'Brincos', 'Colares', 'Pulseiras'];
-  itemSelecionado: string = this.menuItems[0];
+  menuCategoria: string[] = ['Todos os produtos', 'Anel', 'Bracelete', 'Brinco', 'Colar', 'Pulseira'];
+  categoriaSelecionada: string = this.menuCategoria[0];
 
-  selecionarItem(item: string) {
-    this.itemSelecionado = item;
+  ordemSelecionada: string = '';
+
+  selecionarCategoria(item: string) {
+    this.categoriaSelecionada = item;
   }
 }

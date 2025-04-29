@@ -107,6 +107,12 @@ form {
     font-weight: bold;
     margin-top: 2rem;
     cursor: pointer;
+    text-transform: uppercase;
+}
+
+.btn.invalid {
+  background-color: gray;
+  cursor: default;
 }
 
 .password-container {
@@ -144,6 +150,16 @@ form {
     margin-left: 1.2rem;
     background-size: 0.9rem;
     background-image: url("../../../assets/cadeado.png");
+}
+
+.inputGenero {
+  width: 92%;
+  padding-left: 2rem;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-position-x: 0.5rem;
+  background-size: 1.5rem;
+  background-image: url("../../../assets/genero.png");
 }
 
 .mensagem_erro {

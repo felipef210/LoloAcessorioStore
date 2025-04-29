@@ -1,21 +1,32 @@
 <header>
-  <div class="logo-area">
+  <nav class="nav-area">
     <a routerLink="/home"><img class="logo-roxa" src="../../../assets/logo_roxa_navbar.png" alt="logo_branca_navbar"></a>
-    <div class="botao-avatar">
-      <ul class="botoes-logo-area">
-        <li>
-          <a routerLink="/catalogo" class="botao-logo-area">
-            <img id="catalogo" src="../../../assets/catalogo.png" alt="Imagem Catálogo">
-            <span>Catálogo</span>
-          </a>
-        </li>
-        <li>
-          <a routerLink="/login-cadastro" class="botao-logo-area" id="login-cadastro">
-            <img id="avatar" src="../../../assets/avatar_usuario_roxo.png" alt="avatar_usuario">
-            <span>Entre ou <br>Cadastre-se</span>
-          </a>
-        </li>
-      </ul>
+    <div class="botoes-nav-area">
+      <div class="botao-nav-area">
+        <a routerLink="/catalogo">
+          <img id="catalogo" src="../../../assets/catalogo.png" alt="Imagem Catálogo">
+          <span>Catálogo</span>
+        </a>
+      </div>
+
+      <div *ngIf="user$ | async as Usuario, else login" >
+        <div class="botao-nav-area">
+          <span class="botao-nav-area">
+            <img routerLink="/perfil" src="../../../assets/user.png" alt="Ícone da pessoa usuária">
+            Olá {{ Usuario.name.split(' ')[0] }}
+          </span>
+          <button class="logout" (click)="logout()"></button>
+          <span (click)="logout()">Sair</span>
+        </div>
+
+      </div>
+
+      <ng-template class="botao-nav-area" #login>
+        <a routerLink="/login-cadastro" id="login-cadastro">
+          <img id="avatar" src="../../../assets/avatar_usuario_roxo.png" alt="avatar_usuario">
+          <span>Entre ou <br>Cadastre-se</span>
+        </a>
+      </ng-template>
     </div>
-  </div>
+  </nav>
 </header>
