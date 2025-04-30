@@ -6,10 +6,12 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent {
-  @Input() isOpen: boolean = false; // Recebe se o modal deve estar aberto ou fechado
-  @Output() close = new EventEmitter<void>(); // Evento de fechamento
+  @Input() isOpen: boolean = false;
+  @Input() titulo: string = '';
+  @Input() conteudo: string = '';
+  @Output() close = new EventEmitter<void>();
 
   closeModal() {
-    this.close.emit(); // Emite evento para o componente pai fechar o modal
+    this.close.emit();
   }
 }

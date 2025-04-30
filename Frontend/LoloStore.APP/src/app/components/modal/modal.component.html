@@ -1,8 +1,8 @@
 <div class="modal-overlay" *ngIf="isOpen" (click)="closeModal()" [class.show]="isOpen">
   <div class="modal-conteudo" (click)="$event.stopPropagation()" [class.show]="isOpen">
     <span class="close" (click)="closeModal()">&times;</span>
-    <h2>Cadastro</h2>
-    <p>Cadastro efetuado com sucesso!</p>
+    <h2>{{ titulo }}</h2>
+    <p>{{ conteudo }}</p>
     <button (click)="closeModal()">FECHAR</button>
   </div>
 </div>

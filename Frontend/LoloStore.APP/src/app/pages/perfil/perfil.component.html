@@ -18,10 +18,11 @@
     </div>
 
     <label for="nascimento">Data de Nascimento:</label>
-    <input class="inputs" type="date" formControlName="birthDate">
+    <input class="inputs input-disabled" type="date" formControlName="birthDate" readonly>
 
     <label for="genero">Gênero:</label>
     <select class="inputs" id="genero" formControlName="gender">
+      <option selected disabled value="">Selecione uma opção</option>
       <option value="Masculino">Masculino</option>
       <option value="Feminino">Feminino</option>
       <option value="Outro">Outro</option>
@@ -51,6 +52,10 @@
                 class="toggle-password"
                 (click)="togglePassword('password')"></button>
 
+    <div class="mensagem_erro" *ngIf="perfilForm.get('password')?.invalid && (perfilForm.get('password')?.touched || perfilForm.get('password')?.dirty)">
+      <app-mensagem *ngIf="perfilForm.get('password')?.errors?.['required']" mensagem="Insira a senha para salvar as alterações."></app-mensagem>
+    </div>
+
     <label for="confirmarSenha">Confirmar Senha:</label>
     <input class="inputs" id="confirmarSenha" [type]="showPasswordConfirmation ? 'text' : 'password'" formControlName="rePassword" />
     <button [style.background-image]="'url(' + (showPasswordConfirmation ? '../../../../assets/esconderSenha.png' : '../../../../assets/mostrarSenha.png') + ')'"
@@ -58,10 +63,15 @@
                 class="toggle-password"
                 (click)="togglePassword('repassword')"></button>
 
+    <div class="mensagem_erro" *ngIf="perfilForm.get('rePassword')?.invalid && (perfilForm.get('rePassword')?.touched || perfilForm.get('rePassword')?.dirty)">
+      <app-mensagem *ngIf="perfilForm.get('rePassword')?.errors?.['required']" mensagem="Confirme a senha para salvar as alterações."></app-mensagem>
+    </div>
     <div class="form-actions">
-      <button class="btn" [class.invalid]="perfilForm.invalid" type="button" (click)="atualizar()" [disabled]="perfilForm.invalid">Atualizar Perfil</button>
+      <button class="btn" [class.invalid]="perfilForm.invalid" type="button" (click)="atualizar(perfilForm)" [disabled]="perfilForm.invalid">Atualizar Perfil</button>
     </div>
   </form>
 </div>
+
+<app-modal [isOpen]="isModalOpen" (close)="closeModal()" [titulo]="tituloModal" [conteudo]="conteudoModal"></app-modal>
 
 <app-footer></app-footer>

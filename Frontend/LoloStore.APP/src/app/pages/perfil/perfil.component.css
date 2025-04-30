@@ -27,6 +27,12 @@
   border-radius: .5rem;
 }
 
+.input-disabled {
+  background-color: #eee;
+  color: #888;
+  cursor: not-allowed;
+}
+
 
 .form-actions {
   margin-top: 2rem;

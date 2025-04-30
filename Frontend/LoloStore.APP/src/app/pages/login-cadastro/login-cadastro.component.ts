@@ -33,6 +33,8 @@ export class LoginCadastroComponent implements OnInit {
   dataNascimento: string = '';
   mensagemErroCadastro: string | null = null;
   mensagemErroLogin: string | null = null;
+  tituloModal: string = 'Cadastro';
+  conteudoModal: string = 'Cadastro efetuado com sucesso!';
 
   showPasswordLogin: boolean = false;
   showPasswordCadastro: boolean = false;

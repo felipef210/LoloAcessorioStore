@@ -14,4 +14,12 @@ export class CadastroService {
   cadastrar(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(`${this.apiUrl}/User/cadastro`, usuario);
   }
+
+  buscarCadastro(): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.apiUrl}/User/perfil`);
+  }
+
+  editarCadastro(usuario: Usuario): Observable<Usuario> {
+    return this.http.patch<Usuario>(`${this.apiUrl}/User/atualizar`, usuario);
+  }
 }

@@ -33,6 +33,14 @@ ul li {
   margin: .5rem 0;
 }
 
+ul li:hover {
+  font-weight: bold;
+}
+
+ul li:not(:last-child) {
+  margin-bottom: .8rem;
+}
+
 a[routerLink] {
   text-decoration: none;
   color: inherit;
@@ -86,6 +94,7 @@ a[routerLink] {
 
 .sub-menu {
   display: none;
+  font-weight: 100;
   position: absolute;
   padding: .5rem;
   background-color: #FFF;
