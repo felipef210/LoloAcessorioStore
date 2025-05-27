@@ -10,7 +10,7 @@ import { CatalogoComponent } from './pages/catalogo/catalogo.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AcessorioComponent } from './components/acessorios/acessorio/acessorio.component';
 import { ListarAcessoriosComponent } from './components/acessorios/listar-acessorios/listar-acessorios.component';
-import { DetalheAcessorioComponent } from './components/acessorios/detalhe-acessorio/detalhe-acessorio.component';
+import { DetalheAcessorioComponent } from './pages/detalhe-acessorio/detalhe-acessorio.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UsuarioComponent } from './components/usuarios/usuario/usuario.component';
 import { LoginCadastroComponent } from './pages/login-cadastro/login-cadastro.component';
@@ -19,6 +19,7 @@ import { ModalComponent } from './components/modal/modal.component';
 import { MensagemComponent } from './components/mensagem/mensagem.component';
 import { AutenticacaoInterceptor } from './interceptors/autenticacao.interceptor';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+import { NavComponent } from './components/nav/nav.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
     ModalComponent,
     MensagemComponent,
     PerfilComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,

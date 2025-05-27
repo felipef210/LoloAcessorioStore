@@ -1,14 +1,9 @@
 <body class="container">
-  <app-header></app-header>
-  <nav class="nav">
-    <ul class="nav-itens">
-      <li *ngFor="let item of menuCategoria"
-          (click)="selecionarCategoria(item)"
-          [class.selected]="item === categoriaSelecionada">
-        <a>{{ item }}</a>
-      </li>
-    </ul>
-  </nav>
+  <header>
+    <app-header></app-header>
+    <app-nav (categoriaChange)="categoriaSelecionada = $event"></app-nav>
+  </header>
+
   <section class="area-filtro">
     <h2>Catálogo</h2>
     <form class="form-filtro">
@@ -27,5 +22,4 @@
   </section>
 
   <app-footer></app-footer>
-
 </body>

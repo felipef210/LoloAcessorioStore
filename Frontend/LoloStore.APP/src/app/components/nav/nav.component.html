@@ -1,0 +1,9 @@
+<nav class="nav">
+  <ul class="nav-itens">
+    <li *ngFor="let item of menuCategoria"
+        (click)="selecionarCategoria(item)"
+        [class.selected]="item === categoriaSelecionada">
+      <a>{{ item }}</a>
+    </li>
+  </ul>
+</nav>

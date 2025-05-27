@@ -5,43 +5,6 @@
   margin: 0;
 }
 
-.nav {
-  background-color: #9B70E8;
-  padding: 0.2rem;
-}
-
-.nav-itens {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-}
-
-.nav-itens li {
-  margin-right: 5rem;
-  color: white;
-  padding: 0.5rem;
-  transition: .2s
-}
-
-.nav-itens li a {
-  font-size: 17px;
-  text-decoration: none;
-  cursor: pointer;
-  color: inherit;
-}
-
-.nav-itens li:not(.selected):hover {
-  scale: 1.1;
-}
-
-.selected {
-  background-color: white;
-  border-radius: 2rem;
-  color: #9B70E8 !important;
-  font-weight: bold;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
 .area-filtro {
   display: flex;
   justify-content: center;
