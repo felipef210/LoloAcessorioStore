@@ -1,5 +1,7 @@
 .card {
   border: 2px solid black;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
   border-radius: 1rem;
   overflow: hidden;
   width: 15rem;
@@ -7,7 +9,7 @@
 
 .secao-imagem {
   width: 100%;
-  
+
   overflow: hidden;
   margin: 0;
   padding: 0;
