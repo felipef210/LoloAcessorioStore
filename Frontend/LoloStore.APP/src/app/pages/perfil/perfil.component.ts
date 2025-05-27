@@ -7,6 +7,7 @@ import { Usuario } from '../../interfaces/usuario';
 import { CadastroService } from '../../services/cadastro.service';
 
 enum CamposDeSenha {
+  SENHA_ATUAL = 'passNow',
   CADASTRO_SENHA = 'password',
   CONFIRMA_CADASTRO = 'repassword'
 };
@@ -20,6 +21,7 @@ export class PerfilComponent {
   perfilForm!: FormGroup;
   usuarioLogado!: Usuario;
   campoDesabilitado: boolean = true;
+  showPasswordNow: boolean = false;
   showPassword: boolean = false;
   showPasswordConfirmation: boolean = false;
   isModalOpen: boolean = false;
@@ -44,29 +46,68 @@ export class PerfilComponent {
   }
 
   inicializarFormulario() {
-    const birthDateFormatada = this.formatarData(this.usuarioLogado.birthDate);
-
     this.perfilForm = this.formBuilder.group({
       name: [this.usuarioLogado.name, Validators.required],
-      birthDate: [birthDateFormatada, Validators.required],
-      email: [this.usuarioLogado.email, Validators.required],
-      password: [''],
-      rePassword: [''],
-      reEmail: [this.usuarioLogado.email, Validators.required],
-      gender: [this.usuarioLogado.gender, Validators.required]
+      birthDate: [this.usuarioLogado.birthDate, Validators.required],
+      email: [this.usuarioLogado.email, [Validators.required, Validators.email]],
+      passNow: ['', Validators.required],
+      password: [{ value: '', disabled: true }, [Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/)]],
+      rePassword: [{ value: '', disabled: true }],
+      reEmail: [this.usuarioLogado.email, [Validators.required, Validators.email]],
+      gender: [this.usuarioLogado.gender, Validators.required],
+      changePassword: [false]
+    }, {
+      validators: [this.confirmarEmailsIguais(), this.confirmarSenhasIguais()]
+    });
+
+    // Habilitar/desabilitar dinamicamente os campos de senha
+    this.perfilForm.get('changePassword')?.valueChanges.subscribe((trocarSenha) => {
+      const passwordControl = this.perfilForm.get('password');
+      const rePasswordControl = this.perfilForm.get('rePassword');
+
+      if (trocarSenha) {
+        passwordControl?.setValue('');
+        rePasswordControl?.setValue('');
+        passwordControl?.enable();
+        rePasswordControl?.enable();
+        passwordControl?.setValidators([
+          Validators.required,
+          Validators.pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/)
+        ]);
+        rePasswordControl?.setValidators([Validators.required]);
+      }
+      else {
+        passwordControl?.disable();
+        rePasswordControl?.disable();
+        passwordControl?.clearValidators();
+        rePasswordControl?.clearValidators();
+      }
+
+      passwordControl?.updateValueAndValidity();
+      rePasswordControl?.updateValueAndValidity();
     });
   }
 
-  formatarData(data: string | Date): string {
-    const d = new Date(data);
-    const ano = d.getFullYear();
-    const mes = String(d.getMonth() + 1).padStart(2, '0');
-    const dia = String(d.getDate()).padStart(2, '0');
-    return `${ano}-${mes}-${dia}`;
+  confirmarEmailsIguais() {
+    return (group: FormGroup) => {
+      const email = group.get('email')?.value;
+      const reEmail = group.get('reEmail')?.value;
+      return email === reEmail ? null : { emailDiferente: true }
+    }
+  }
+  confirmarSenhasIguais() {
+    return (group: FormGroup) => {
+      const password = group.get('password')?.value;
+      const rePassword = group.get('rePassword')?.value;
+      return password === rePassword ? null : { senhaDiferente: true }
+    }
   }
 
   togglePassword(campo: string) {
-    if (campo === CamposDeSenha.CADASTRO_SENHA)
+    if (campo === CamposDeSenha.SENHA_ATUAL)
+      this.showPasswordNow = !this.showPasswordNow;
+
+    else if (campo === CamposDeSenha.CADASTRO_SENHA)
       this.showPassword = !this.showPassword;
 
     else if (campo === CamposDeSenha.CONFIRMA_CADASTRO)
@@ -75,10 +116,33 @@ export class PerfilComponent {
 
   atualizar(form: FormGroup) {
     if(form.valid) {
-      const usuarioAtualizado = form.getRawValue() as Usuario;
-      this.cadastroService.editarCadastro(usuarioAtualizado).subscribe(() => {
-        this.openModal();
-      })
+      const usuarioAtualizado = form.getRawValue();
+
+      if (form.get('changePassword')?.value) {
+        if (form.get('password')?.value !== form.get('rePassword')?.value) {
+          this.perfilForm.get('rePassword')?.setErrors({ senhaDiferente: true });
+          return;
+        }
+        usuarioAtualizado.password = form.get('password')?.value;
+      }
+      else {
+        usuarioAtualizado.password = form.get('passNow')?.value;
+        usuarioAtualizado.rePassword = form.get('passNow')?.value;
+      }
+
+      this.cadastroService.editarCadastro(usuarioAtualizado).subscribe({
+        next: () => {
+          this.openModal();
+        },
+        error: (err) => {
+          if (err.status === 401 && err.error === 'Senha atual inválida!') {
+            this.perfilForm.get('passNow')?.setErrors({ senhaIncorreta: true });
+          }
+          else
+          console.log(err);
+
+        }
+      });
     }
   }
 

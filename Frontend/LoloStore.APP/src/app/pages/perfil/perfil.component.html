@@ -6,7 +6,7 @@
 </div>
 
 <div class="container">
-  <form [formGroup]="perfilForm">
+  <form *ngIf="perfilForm" [formGroup]="perfilForm">
     <h1>Olá, {{ usuarioLogado.name.split(' ')[0] }}!</h1>
 
     <h2>Dados Pessoais</h2>
@@ -45,11 +45,31 @@
       <app-mensagem *ngIf="perfilForm.get('email')?.errors?.['required']" mensagem="Confirmação de e-mail deve ser preenchida."></app-mensagem>
     </div>
 
-    <label for="senha">Senha:</label>
-    <input class="inputs" id="senha" [type]="showPassword ? 'text' : 'password'" formControlName="password"/>
+    <label for="senhaAtual">Senha atual:</label>
+    <input class="inputs" id="senhaAtual" [type]="showPasswordNow ? 'text' : 'password'" formControlName="passNow"/>
+    <button [style.background-image]="'url(' + (showPasswordNow ? '../../../../assets/esconderSenha.png' : '../../../../assets/mostrarSenha.png') + ')'"
+                type="button"
+                class="toggle-password"
+                (click)="togglePassword('passNow')"></button>
+
+    <span class="swtich_text">Deseja alterar sua senha ?</span>
+    <label class="switch">
+      <input type="checkbox" formControlName="changePassword">
+      <span class="slider round"></span>
+    </label>
+
+    <div class="mensagem_erro" *ngIf="perfilForm.get('passNow')?.invalid && (perfilForm.get('passNow')?.touched || perfilForm.get('passNow')?.dirty)">
+      <app-mensagem *ngIf="perfilForm.get('passNow')?.errors?.['required']" mensagem="Insira a senha para salvar as alterações."></app-mensagem>
+      <app-mensagem *ngIf="perfilForm.get('passNow')?.errors?.['senhaIncorreta']" mensagem="Senha atual inválida!"></app-mensagem>
+    </div>
+
+    <label for="senha">Nova Senha:</label>
+    <input class="inputs" [class.input-disabled]="!perfilForm.get('changePassword')?.value" id="senha" [type]="showPassword ? 'text' : 'password'" formControlName="password"/>
     <button [style.background-image]="'url(' + (showPassword ? '../../../../assets/esconderSenha.png' : '../../../../assets/mostrarSenha.png') + ')'"
                 type="button"
                 class="toggle-password"
+                [class.invalid]="perfilForm.invalid"
+                *ngIf="perfilForm.get('changePassword')?.value"
                 (click)="togglePassword('password')"></button>
 
     <div class="mensagem_erro" *ngIf="perfilForm.get('password')?.invalid && (perfilForm.get('password')?.touched || perfilForm.get('password')?.dirty)">
@@ -57,10 +77,12 @@
     </div>
 
     <label for="confirmarSenha">Confirmar Senha:</label>
-    <input class="inputs" id="confirmarSenha" [type]="showPasswordConfirmation ? 'text' : 'password'" formControlName="rePassword" />
+    <input class="inputs" [class.input-disabled]="!perfilForm.get('changePassword')?.value" id="confirmarSenha" [type]="showPasswordConfirmation ? 'text' : 'password'" formControlName="rePassword" />
     <button [style.background-image]="'url(' + (showPasswordConfirmation ? '../../../../assets/esconderSenha.png' : '../../../../assets/mostrarSenha.png') + ')'"
                 type="button"
                 class="toggle-password"
+                [class.invalid]="perfilForm.invalid"
+                *ngIf="perfilForm.get('changePassword')?.value"
                 (click)="togglePassword('repassword')"></button>
 
     <div class="mensagem_erro" *ngIf="perfilForm.get('rePassword')?.invalid && (perfilForm.get('rePassword')?.touched || perfilForm.get('rePassword')?.dirty)">

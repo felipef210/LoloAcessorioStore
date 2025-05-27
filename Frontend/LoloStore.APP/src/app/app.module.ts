@@ -17,7 +17,7 @@ import { LoginCadastroComponent } from './pages/login-cadastro/login-cadastro.co
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ModalComponent } from './components/modal/modal.component';
 import { MensagemComponent } from './components/mensagem/mensagem.component';
-import { AutenticacaoInterceptor } from './interceptor/autenticacao.interceptor';
+import { AutenticacaoInterceptor } from './interceptors/autenticacao.interceptor';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 
 

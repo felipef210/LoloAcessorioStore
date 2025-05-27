@@ -3,6 +3,6 @@ export interface Usuario {
     email: string,
     password: string,
     name: string,
-    birthDate: Date,
+    birthDate: string,
     gender: string
 }
